@@ -1,85 +1,75 @@
 package com.weeroda.feedback.model;
 
-import java.util.Date;
-
-import org.springframework.data.annotation.Id;
+import org.springframework.data.annotation.Transient;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-@Document
-public class User {
+import java.util.List;
 
-	@Id
-	private String userId;
-	private String mobile;
-	private String firstname;
-	private String lastname;
-	private String password;
-	private String email;
-	private Date createdDate;
-	private boolean accFlag;
+@Document(collection = "fbsUser")
+public class User extends BaseEntity {
+    private String userId;
+    private String mobile;
+    private String firstname;
+    private String lastname;
+    private String password;
+    private String email;
 
-	public String getUserId() {
-		return userId;
-	}
+    @Transient
+    private List<Device> devices;
 
-	public void setUserId(String userId) {
-		this.userId = userId;
-	}
+    public String getUserId() {
+        return userId;
+    }
 
-	public String getMobile() {
-		return mobile;
-	}
+    public void setUserId(String userId) {
+        this.userId = userId;
+    }
 
-	public void setMobile(String mobile) {
-		this.mobile = mobile;
-	}
+    public String getMobile() {
+        return mobile;
+    }
 
-	public String getFirstname() {
-		return firstname;
-	}
+    public void setMobile(String mobile) {
+        this.mobile = mobile;
+    }
 
-	public void setFirstname(String firstname) {
-		this.firstname = firstname;
-	}
+    public String getFirstname() {
+        return firstname;
+    }
 
-	public String getLastname() {
-		return lastname;
-	}
+    public void setFirstname(String firstname) {
+        this.firstname = firstname;
+    }
 
-	public void setLastname(String lastname) {
-		this.lastname = lastname;
-	}
+    public String getLastname() {
+        return lastname;
+    }
 
-	public String getPassword() {
-		return password;
-	}
+    public void setLastname(String lastname) {
+        this.lastname = lastname;
+    }
 
-	public void setPassword(String password) {
-		this.password = password;
-	}
+    public String getPassword() {
+        return password;
+    }
 
-	public String getEmail() {
-		return email;
-	}
+    public void setPassword(String password) {
+        this.password = password;
+    }
 
-	public void setEmail(String email) {
-		this.email = email;
-	}
+    public String getEmail() {
+        return email;
+    }
 
-	public Date getCreatedDate() {
-		return createdDate;
-	}
+    public void setEmail(String email) {
+        this.email = email;
+    }
 
-	public void setCreatedDate(Date createdDate) {
-		this.createdDate = createdDate;
-	}
+    public List<Device> getDevices() {
+        return devices;
+    }
 
-	public boolean isAccFlag() {
-		return accFlag;
-	}
-
-	public void setAccFlag(boolean accFlag) {
-		this.accFlag = accFlag;
-	}
-
+    public void setDevices(List<Device> devices) {
+        this.devices = devices;
+    }
 }

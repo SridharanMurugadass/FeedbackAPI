@@ -1,9 +1,7 @@
 package com.weeroda.feedback.repository;
 
+import com.weeroda.feedback.model.Device;
 import org.springframework.data.mongodb.repository.MongoRepository;
 
-import com.weeroda.feedback.model.User;
-
-public interface UserRepo extends MongoRepository<User, String>  {
-
+public interface DeviceRepo extends MongoRepository<Device, String> {
 }

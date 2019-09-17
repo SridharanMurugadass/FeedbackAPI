@@ -1,7 +1,7 @@
 package com.weeroda.feedback.controller;
 
-import com.weeroda.feedback.model.Feedback;
-import com.weeroda.feedback.service.FeedbackService;
+import com.weeroda.feedback.model.User;
+import com.weeroda.feedback.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -9,13 +9,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/api/feedbacks")
-public class FeedbackController {
+@RequestMapping("/api/users")
+public class UserController {
     @Autowired
-    private FeedbackService service;
+    private UserService service;
 
     @PostMapping("/v1")
-    public Feedback create(@RequestBody Feedback feedback) {
-        return service.create(feedback);
+    public User signUp(@RequestBody User user) {
+        return service.create(user);
     }
 }
