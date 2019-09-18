@@ -1,12 +1,13 @@
 package com.weeroda.feedback.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document
 public class Feedback extends BaseEntity {
     private int feedback;
     private String deviceId;
-    private String userId;
+    private UserMinimal user;
 
     public int getFeedback() {
         return feedback;
@@ -24,11 +25,12 @@ public class Feedback extends BaseEntity {
         this.deviceId = deviceId;
     }
 
-    public String getUserId() {
-        return userId;
+    public UserMinimal getUser() {
+        return user;
     }
 
-    public void setUserId(String userId) {
-        this.userId = userId;
+    @JsonIgnore
+    public void setUser(UserMinimal user) {
+        this.user = user;
     }
 }

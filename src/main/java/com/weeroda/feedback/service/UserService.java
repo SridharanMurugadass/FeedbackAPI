@@ -1,5 +1,6 @@
 package com.weeroda.feedback.service;
 
+import com.weeroda.feedback.exception.AppException;
 import com.weeroda.feedback.model.CustomUser;
 import com.weeroda.feedback.model.Device;
 import com.weeroda.feedback.model.User;
@@ -28,6 +29,7 @@ public class UserService implements UserDetailsService {
 
     public User create(User user) {
         LOGGER.debug("email: {}, mobile: {}", user.getEmail(), user.getMobile());
+        validate(user);
         user.setPassword(HashingService.encodeValue(user.getPassword()));
         user.setCreatedDate(new Date());
 
@@ -45,5 +47,29 @@ public class UserService implements UserDetailsService {
         User user = repo.findByUserId(userId);
         UserDetails userDetails = user == null ? null : new CustomUser(user);
         return userDetails;
+    }
+
+    public User getByUserId(String userId) {
+        User user = repo.findByUserId(userId);
+        return user;
+    }
+
+    private void validate(User user) {
+        if (user.getUserId() == null || user.getUserId().trim().length() == 0) {
+            throw new AppException("User Id is mandatory");
+        }
+
+        if (user.getPassword() == null || user.getPassword().trim().length() == 0) {
+            throw new AppException("Password is mandatory");
+        }
+
+        User existingUser = repo.findByUserId(user.getUserId());
+        if (existingUser != null) {
+            throw new AppException("Duplicate User Id");
+        }
+
+        if (user.getDevices() != null) {
+            user.getDevices().forEach(deviceService::validate);
+        }
     }
 }
