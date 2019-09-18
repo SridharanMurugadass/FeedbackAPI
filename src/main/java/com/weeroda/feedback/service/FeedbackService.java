@@ -12,9 +12,6 @@ public class FeedbackService {
     @Autowired
     private FeedbackRepo repo;
 
-    @Autowired
-    private SequenceService seqService;
-
     public Feedback create(Feedback feedback) {
         feedback.setCreatedDate(new Date());
         Feedback createdFeedback = repo.save(feedback);
