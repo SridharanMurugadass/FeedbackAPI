@@ -4,7 +4,6 @@ import com.weeroda.feedback.exception.AppException;
 import com.weeroda.feedback.model.Device;
 import com.weeroda.feedback.model.User;
 import com.weeroda.feedback.repository.DeviceRepo;
-import com.weeroda.feedback.security.CurrentContext;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -34,8 +33,7 @@ public class DeviceService {
     }
 
     public List<Device> getAll() {
-        String loggedInUserId = CurrentContext.getUserId();
-        User loggedInUser = userService.getByUserId(loggedInUserId);
+        User loggedInUser = userService.getLoggedInUser();
         List<Device> devices = repo.findByUserId(loggedInUser.get_id());
         return devices;
     }

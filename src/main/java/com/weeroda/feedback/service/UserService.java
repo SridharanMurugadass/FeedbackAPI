@@ -5,6 +5,7 @@ import com.weeroda.feedback.model.CustomUser;
 import com.weeroda.feedback.model.Device;
 import com.weeroda.feedback.model.User;
 import com.weeroda.feedback.repository.UserRepo;
+import com.weeroda.feedback.security.CurrentContext;
 import com.weeroda.feedback.utils.HashingService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -52,6 +53,12 @@ public class UserService implements UserDetailsService {
     public User getByUserId(String userId) {
         User user = repo.findByUserId(userId);
         return user;
+    }
+
+    public User getLoggedInUser() {
+        String loggedInUserId = CurrentContext.getUserId();
+        User loggedInUser = getByUserId(loggedInUserId);
+        return loggedInUser;
     }
 
     private void validate(User user) {

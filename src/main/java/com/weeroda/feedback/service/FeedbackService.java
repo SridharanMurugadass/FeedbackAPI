@@ -6,7 +6,6 @@ import com.weeroda.feedback.model.Feedback;
 import com.weeroda.feedback.model.User;
 import com.weeroda.feedback.model.UserMinimal;
 import com.weeroda.feedback.repository.FeedbackRepo;
-import com.weeroda.feedback.security.CurrentContext;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -26,8 +25,7 @@ public class FeedbackService {
 
     public Feedback create(Feedback feedback) {
         validate(feedback);
-        String loggedInUserId = CurrentContext.getUserId();
-        User loggedInUser = userService.getByUserId(loggedInUserId);
+        User loggedInUser = userService.getLoggedInUser();
         feedback.setUser(new UserMinimal(loggedInUser));
         feedback.setCreatedDate(new Date());
         Feedback createdFeedback = repo.save(feedback);
