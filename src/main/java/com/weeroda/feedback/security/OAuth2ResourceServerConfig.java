@@ -13,6 +13,6 @@ public class OAuth2ResourceServerConfig extends ResourceServerConfigurerAdapter 
 
     @Override
     public void configure(ResourceServerSecurityConfigurer config) {
-        config.tokenServices(tokenServices).resourceId("1");
+        config.tokenServices(tokenServices);
     }
 }

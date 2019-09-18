@@ -1,0 +1,13 @@
+spring.data.mongodb.database=
+spring.data.mongodb.host=
+spring.data.mongodb.port=
+spring.data.mongodb.username=
+spring.data.mongodb.password=
+server.servlet.context-path=/fbs
+server.port=8080
+
+accessToken.signingKey=
+auth.client=
+auth.secret=
+accessToken.validity.sec=
+refreshToken.validity.sec=
