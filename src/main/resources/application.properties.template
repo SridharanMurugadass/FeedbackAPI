@@ -1,13 +1,13 @@
-spring.data.mongodb.database=
-spring.data.mongodb.host=
-spring.data.mongodb.port=
-spring.data.mongodb.username=
-spring.data.mongodb.password=
+spring.data.mongodb.database=donar_app
+spring.data.mongodb.host=ds145275.mlab.com
+spring.data.mongodb.port=45275
+spring.data.mongodb.username=city
+spring.data.mongodb.password=city@123
 server.servlet.context-path=/fbs
 server.port=8080
 
-accessToken.signingKey=
-auth.client=
-auth.secret=
-accessToken.validity.sec=
-refreshToken.validity.sec=
+accessToken.signingKey=634726gdghfwgeh32yy
+auth.client=62386eufgfgdfgjqqe3
+auth.secret=khghfghg23823624
+accessToken.validity.sec=111
+refreshToken.validity.sec=111
