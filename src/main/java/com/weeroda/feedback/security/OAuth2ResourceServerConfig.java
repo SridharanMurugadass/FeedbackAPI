@@ -20,7 +20,13 @@ public class OAuth2ResourceServerConfig extends ResourceServerConfigurerAdapter 
     @Override
     public void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
-                .antMatchers("/api/open/**").permitAll()
+                .antMatchers("/api/open/**",
+                        "/swagger-ui.html",
+                        "/swagger-resources",
+                        "/swagger-resources/**",
+                        "/v2/api-docs/**",
+                        "/webjars/**")
+                .permitAll()
                 .anyRequest().authenticated();
     }
 }
