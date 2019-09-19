@@ -58,6 +58,7 @@ public class UserService implements UserDetailsService {
     public User getLoggedInUser() {
         String loggedInUserId = CurrentContext.getUserId();
         User loggedInUser = getByUserId(loggedInUserId);
+        loggedInUser.setPassword(null);
         return loggedInUser;
     }
 

@@ -50,7 +50,6 @@ public class User extends BaseEntity {
         this.lastname = lastname;
     }
 
-    @JsonIgnore
     public String getPassword() {
         return password;
     }
