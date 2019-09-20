@@ -1,14 +1,24 @@
 package com.weeroda.feedback.model;
 
-import org.springframework.data.mongodb.core.mapping.Document;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
-@Document
 public class Device extends BaseEntity {
+    private String _id;
     private String name;
     private String macAddress;
     private String location;
     private String description;
-    private String userId;
+
+    @JsonIgnore
+    private boolean accFlag;
+
+    public String get_id() {
+        return _id;
+    }
+
+    public void set_id(String _id) {
+        this._id = _id;
+    }
 
     public String getName() {
         return name;
@@ -42,11 +52,11 @@ public class Device extends BaseEntity {
         this.description = description;
     }
 
-    public String getUserId() {
-        return userId;
+    public boolean isAccFlag() {
+        return accFlag;
     }
 
-    public void setUserId(String userId) {
-        this.userId = userId;
+    public void setAccFlag(boolean accFlag) {
+        this.accFlag = accFlag;
     }
 }

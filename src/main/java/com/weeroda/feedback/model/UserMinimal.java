@@ -2,7 +2,7 @@ package com.weeroda.feedback.model;
 
 public class UserMinimal {
     private String id;
-    private String userName;
+    private String userId;
     private String mobile;
     private String firstname;
     private String lastname;
@@ -13,7 +13,7 @@ public class UserMinimal {
 
     public UserMinimal(User user) {
         id = user.get_id();
-        userName = user.getUserId();
+        userId = user.getUserId();
         mobile = user.getMobile();
         firstname = user.getFirstname();
         lastname = user.getLastname();
@@ -28,12 +28,12 @@ public class UserMinimal {
         this.id = id;
     }
 
-    public String getUserName() {
-        return userName;
+    public String getUserId() {
+        return userId;
     }
 
-    public void setUserName(String userName) {
-        this.userName = userName;
+    public void setUserId(String userId) {
+        this.userId = userId;
     }
 
     public String getMobile() {

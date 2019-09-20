@@ -1,13 +1,26 @@
 package com.weeroda.feedback.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.springframework.data.annotation.Transient;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document
 public class Feedback extends BaseEntity {
+    private String _id;
     private int feedback;
-    private String deviceId;
+    private DeviceMinimal device;
     private UserMinimal user;
+
+    @Transient
+    private String deviceId;
+
+    public String get_id() {
+        return _id;
+    }
+
+    public void set_id(String _id) {
+        this._id = _id;
+    }
 
     public int getFeedback() {
         return feedback;
@@ -17,12 +30,13 @@ public class Feedback extends BaseEntity {
         this.feedback = feedback;
     }
 
-    public String getDeviceId() {
-        return deviceId;
+    public DeviceMinimal getDevice() {
+        return device;
     }
 
-    public void setDeviceId(String deviceId) {
-        this.deviceId = deviceId;
+    @JsonIgnore
+    public void setDevice(DeviceMinimal device) {
+        this.device = device;
     }
 
     public UserMinimal getUser() {
@@ -32,5 +46,14 @@ public class Feedback extends BaseEntity {
     @JsonIgnore
     public void setUser(UserMinimal user) {
         this.user = user;
+    }
+
+    public String getDeviceId() {
+        if (deviceId != null) { return deviceId; }
+        return device == null ? null : device.getId();
+    }
+
+    public void setDeviceId(String deviceId) {
+        this.deviceId = deviceId;
     }
 }
